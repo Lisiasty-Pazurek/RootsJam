@@ -9,6 +9,7 @@ public class WoodyAnimator : MonoBehaviour
     private Animator eAnimator;
     private NavMeshAgent eAgent;
     private SpriteRenderer eRenderer;
+    private WoodcutterBehavior woodcutterState;
 
 
     // Start is called before the first frame update
@@ -17,16 +18,24 @@ public class WoodyAnimator : MonoBehaviour
         eAnimator = GetComponentInChildren<Animator>();
         eAgent = GetComponent<NavMeshAgent>();
         eRenderer = GetComponentInChildren<SpriteRenderer>();
+        woodcutterState = GetComponent<WoodcutterBehavior>();
     }
 
     // Update is called once per frame
     void Update()
     {
         eAnimator.SetBool("isWalking", eAgent.hasPath);
-        
+
 
         if (eAgent.destination != null)
         eRenderer.flipX = (eAgent.destination.x < this.transform.position.x);
+
+        if (woodcutterState.StateName == "DoWork")
+        {
+            eAnimator.SetBool("isWalking", false);
+            eAnimator.SetBool("isWorking", true);
+        }
+        else eAnimator.SetBool("isWorking", false);
 
     }
 }

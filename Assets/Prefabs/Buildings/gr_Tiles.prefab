@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 589670793933782355}
   - component: {fileID: 589670793933782354}
   m_Layer: 0
-  m_Name: bg-kafelki
+  m_Name: gr_Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

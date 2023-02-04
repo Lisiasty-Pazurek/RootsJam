@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
+
 public class PlayerController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float speed = 3f;
+    public float currentSpeed = 3f;
     public Animator cAnimator;
     public SpriteRenderer cRenderer;
     public string aState; 
@@ -25,21 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Click to move movement
-        // if (clickToMove == true)
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     RaycastHit hit;
 
-        //     if (Physics.Raycast(ray, out hit))
-        //     {
-        //         agent.destination = hit.point;
-        //     }
-        // }
-
-        // WASD movement
-        if (clickToMove == false) {
             
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -49,10 +37,19 @@ public class PlayerController : MonoBehaviour
             Animate();
 
             Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
-            moveDirection = moveDirection.normalized * speed * Time.deltaTime;
+            moveDirection = moveDirection.normalized * currentSpeed * Time.deltaTime;
 
             agent.Move(moveDirection);   
-        }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                currentSpeed = speed * 1.8f;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                currentSpeed = speed;
+            }
+      
 
     }
 
