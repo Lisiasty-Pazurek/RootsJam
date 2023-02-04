@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2078389372905611507}
   - component: {fileID: 131513796838237174}
   - component: {fileID: 131513796838237173}
-  - component: {fileID: 7306740032950955684}
-  m_Layer: 0
-  m_Name: sciana
+  - component: {fileID: 3987306189363174720}
+  m_Layer: 8
+  m_Name: Wall hiding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
-  m_Size: {x: 4.72, y: 8.16}
+  m_DrawMode: 2
+  m_Size: {x: 5, y: 7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,9 +102,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.9, y: 8.16, z: 0.69553804}
-  m_Center: {x: 0, y: 4.08, z: -0.247769}
---- !u!114 &7306740032950955684
+  m_Size: {x: 4.9, y: 8.16, z: 1.2325238}
+  m_Center: {x: 0, y: 4.08, z: 0.02072388}
+--- !u!114 &3987306189363174720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,8 +113,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 131513796838237172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Script: {fileID: 11500000, guid: a63d7c7a7db2d1745b8f90b68eb5257e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  camera: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  maxDistance: 27.73
