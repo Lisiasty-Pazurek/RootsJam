@@ -55,6 +55,9 @@ public class WoodcutterBehavior : MonoBehaviour
     public int currentItemNo = 0;
 
     [SerializeField]
+    public GameObject _player;
+
+    [SerializeField]
     public bool _showDebugMsgs = true;
 
     float noTargetTimer = 0f;
@@ -200,7 +203,7 @@ public class WoodcutterBehavior : MonoBehaviour
         {
             SeePlayer = true;
             SeePlayerLastTime = Time.time;
-            PlayerLastPosition = other.transform.position;
+            PlayerLastPosition = other.gameObject.transform.position; //_player.transform.position; //
         }
     }
 
