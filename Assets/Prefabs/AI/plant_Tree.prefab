@@ -116,7 +116,7 @@ MonoBehaviour:
   woodcutterItemParam: 
   woodcutterWorkType: CreateWood
   WorkRaletedPrefab: {fileID: 6291685419899258986, guid: 48170cf332b1ce0449ad90c375493e27, type: 3}
-  TimeBeforeWorkDone: 1
+  TimeBeforeWorkDone: 4
 --- !u!1 &8825558753791435666
 GameObject:
   m_ObjectHideFlags: 0
