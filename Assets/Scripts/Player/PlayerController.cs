@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer cRenderer;
     public string aState; 
 
+    [SerializeField]
+    public Transform itemSlot;
+
     // Esay toggle in editor to swap between click to move and wasd movement
     [SerializeField] public bool clickToMove;
 
@@ -62,6 +65,8 @@ public class PlayerController : MonoBehaviour
             }
             else cAnimator.SetBool("isWalking", false);
     }
+
+    
 
     // private void OnCollisionEnter(Collision other) 
     // {

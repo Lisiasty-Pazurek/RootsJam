@@ -139,9 +139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4147697880795487646}
   speed: 3
+  currentSpeed: 3
   cAnimator: {fileID: 0}
   cRenderer: {fileID: 0}
   aState: 
+  itemSlot: {fileID: 4147697880893037889}
   clickToMove: 0
 --- !u!195 &4147697880795487646
 NavMeshAgent:
@@ -349,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4147697880893037890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -21,6 +21,9 @@ public class WoodcutterBehavior : MonoBehaviour
     public float ChaseTime = 4f;
 
     [SerializeField]
+    public float moveToDistance = 0.5f;
+
+    [SerializeField]
     public GameObject ChasingGraphicObject;
 
     public string WantedwoodcutterItemType;
@@ -98,8 +101,8 @@ public class WoodcutterBehavior : MonoBehaviour
 
         _stateMachine.AddAnyTransition(chase, () => SeePlayer);
         _stateMachine.AddAnyTransition(searchForWantedItem, () => GlobalTimeStuck > 10f);
-        //At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f))); //to nie dzia³a
-        // At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time))); //to dzia³a
+        //At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f))); //to nie dziaï¿½a
+        // At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time))); //to dziaï¿½a
         At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || (SeePlayerLastTime + 1f < Time.time && navMeshAgent.remainingDistance < 0.2f))));
         At(lookAround, moveToSelectedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time && TargetItem != null));
         At(lookAround, searchForWantedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time && TargetItem == null));
@@ -114,7 +117,7 @@ public class WoodcutterBehavior : MonoBehaviour
             if (TargetItem != null)
             {
                 // Debug.Log(Vector3.Distance(transform.position, TargetAxe.transform.position));
-                return Vector3.Distance(transform.position, TargetItem.transform.position) < 0.5f;
+                return Vector3.Distance(transform.position, TargetItem.transform.position) < moveToDistance;
 
             }
             else
@@ -158,7 +161,7 @@ public class WoodcutterBehavior : MonoBehaviour
             else
                 ChasingGraphicObject.SetActive(false);
 
-            // if (Vector3.Distance(transform.position, _lastPosition) == 0f) //chyba nie dzia³a
+            // if (Vector3.Distance(transform.position, _lastPosition) == 0f) //chyba nie dziaï¿½a
             if (navMeshAgent.enabled && (Vector3.Distance(transform.position, _lastPosition) == 0f) && !SeePlayer)
                 GlobalTimeStuck += Time.deltaTime;
             else
@@ -177,7 +180,7 @@ public class WoodcutterBehavior : MonoBehaviour
         }
         catch (Exception e)
         {
-
+            Debug.Log(e);
         }
     }
 
