@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
+
 
 public class Interactable : MonoBehaviour
 {
@@ -23,8 +23,8 @@ public class Interactable : MonoBehaviour
     {
 //        if (!canInteract) return;
         // if (!itemState) itemState = true; 
-        
-        this.transform.SetParent(other.GetComponent<PlayerController>().itemSlot);
 
+        this.transform.SetParent(other.GetComponent<PlayerController>().itemSlot);
+        this.transform.position = other.GetComponent<PlayerController>().itemSlot.transform.position;
     }
 }
