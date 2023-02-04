@@ -37,7 +37,7 @@ namespace Assets.Script.GRLO
                 case "CreateWood":
                     try
                     {
-                        Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, -3);
+                        Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(.5f,1.5f));
                         _woodcutter.CreateInstance(_woodcutter.TargetItem.WorkRaletedPrefab, target, Quaternion.identity);
                     }
                     catch (Exception ex)
