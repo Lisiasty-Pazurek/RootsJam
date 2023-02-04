@@ -32,8 +32,8 @@ namespace Assets.Script.GRLO
             _navMeshAgent.enabled = true;
             Vector2 rand = new Vector2(UnityEngine.Random.Range(1f, 2f) * UnityEngine.Random.Range(-1, 2), UnityEngine.Random.Range(1f, 2f) * UnityEngine.Random.Range(-1, 2));
             _navMeshAgent.SetDestination( _woodcutter.transform.position + new Vector3(rand.x,0,rand.y));
-            timeToChange = Time.time + UnityEngine.Random.RandomRange(1f, 3f);
-            if (_woodcutter.ShowDebugMsgs)
+            timeToChange = Time.time + UnityEngine.Random.Range(1f, 3f);
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Entered: " + StateName);
         }
 
@@ -41,7 +41,7 @@ namespace Assets.Script.GRLO
         {
             _woodcutter.LookAround = false;
             _navMeshAgent.enabled = false;
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Left: " + StateName);
         }
 

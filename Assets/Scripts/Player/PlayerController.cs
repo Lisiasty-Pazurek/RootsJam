@@ -47,6 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log("Collision with : " + other.gameObject.name );
+        //Debug.Log("Collision with : " + other.gameObject.name );
     }
 }

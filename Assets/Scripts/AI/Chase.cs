@@ -26,14 +26,14 @@ namespace Assets.Script.GRLO
             if (_woodcutter.currentItemNo < 0)
                 _woodcutter.currentItemNo = _woodcutter.WantedWoodcutterItemTypeList.Count - 1;
             _navMeshAgent.enabled = true;
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Entered: " + StateName);
         }
 
         public void OnExit()
         {
             _woodcutter.LookAround = true;
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Left: " + StateName);
         }
 

@@ -16,11 +16,39 @@ public class StateMachine
 
     public void Tick()
     {
-        var transition = GetTransition();
-        if (transition != null)
-            SetState(transition.To);
+        Transition transition = null;
+        try
+        {
 
-        _currentState?.Tick();
+            transition = GetTransition();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+
+        try
+        {
+            if (transition != null)
+                SetState(transition.To);
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+
+        }
+
+        try
+        {
+            _currentState?.Tick();
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+
+        }
     }
 
     public void SetState(IState state)

@@ -95,10 +95,13 @@ MonoBehaviour:
   SeePlayerLastTime: 0
   LookAround: 0
   PlayerLastPosition: {x: 0, y: 0, z: 0}
+  _haveAxe: 1
+  _haveAxeSharp: 1
   WantedWoodcutterItemTypeList:
   - Tree
+  - Wood
   currentItemNo: 0
-  ShowDebugMsgs: 1
+  _showDebugMsgs: 1
 --- !u!65 &4897586645588076791
 BoxCollider:
   m_ObjectHideFlags: 0

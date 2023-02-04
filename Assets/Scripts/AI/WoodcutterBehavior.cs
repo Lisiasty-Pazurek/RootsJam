@@ -10,10 +10,15 @@ public class WoodcutterBehavior : MonoBehaviour
     [SerializeField]
     public int Id;
     private StateMachine _stateMachine;
+  
+    [SerializeField]
     public ForWoodcutter TargetItem;
 
     [SerializeField]
-    public float ChaseTime = 1f;
+    public string StateName;
+
+    [SerializeField]
+    public float ChaseTime = 4f;
 
     [SerializeField]
     public GameObject ChasingGraphicObject;
@@ -27,12 +32,23 @@ public class WoodcutterBehavior : MonoBehaviour
     public Vector3 PlayerLastPosition;
 
     [SerializeField]
+    public bool _haveAxe = true;
+    [SerializeField]
+    public bool _haveAxeSharp = true;
+
+    [SerializeField]
+    public bool _haveWood = false;
+
+    Vector3 _lastPosition;
+    float GlobalTimeStuck = 0f;
+
+    [SerializeField]
     public List<string> WantedWoodcutterItemTypeList;
     [SerializeField]
     public int currentItemNo = 0;
 
     [SerializeField]
-    public bool ShowDebugMsgs = true;
+    public bool _showDebugMsgs = true;
     private void Awake()
     {
         _stateMachine = new StateMachine();
@@ -59,19 +75,20 @@ public class WoodcutterBehavior : MonoBehaviour
         //At(placeResourcesInStockpile, search, () => _gathered == 0);
 
         _stateMachine.AddAnyTransition(chase, () => SeePlayer);
-        At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance<0.2f ))) ;
+        _stateMachine.AddAnyTransition(searchForWantedItem, () => GlobalTimeStuck > 4f);
+        At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f)));
         At(lookAround, moveToSelectedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time));
 
         _stateMachine.SetState(searchForWantedItem);
 
         void At(IState to, IState from, Func<bool> condition) => _stateMachine.AddTransition(to, from, condition);
         Func<bool> HasTarget() => () => TargetItem != null;
-        Func<bool> StuckForOverASecond() => () => moveToSelectedItem.TimeStuck > 2f;
+        Func<bool> StuckForOverASecond() => () => (moveToSelectedItem.TimeStuck > 10f || TargetItem == null);
         Func<bool> ReachedTargetItem() => () =>
         {
             if (TargetItem != null)
             {
-               // Debug.Log(Vector3.Distance(transform.position, TargetAxe.transform.position));
+                // Debug.Log(Vector3.Distance(transform.position, TargetAxe.transform.position));
                 return Vector3.Distance(transform.position, TargetItem.transform.position) < 0.5f;
 
             }
@@ -96,11 +113,18 @@ public class WoodcutterBehavior : MonoBehaviour
     void Update()
     {
         _stateMachine.Tick();
+        StateName = _stateMachine._currentState.StateName;
         if (_stateMachine._currentState.StateName == "Chase")
             ChasingGraphicObject.SetActive(true);
         else
             ChasingGraphicObject.SetActive(false);
 
+        if (Vector3.Distance(transform.position, _lastPosition) == 0f)
+            GlobalTimeStuck += Time.deltaTime;
+        else
+            GlobalTimeStuck = 0;
+
+        _lastPosition = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -126,6 +150,23 @@ public class WoodcutterBehavior : MonoBehaviour
             SeePlayer = true;
             SeePlayerLastTime = Time.time;
             PlayerLastPosition = other.transform.position;
-        } 
+        }
+    }
+
+    public GameObject CreateInstance(GameObject prefab, Vector3 vector3, Quaternion rotation)
+    {
+        return Instantiate(prefab, vector3, rotation);
+    }
+    public void DestroyTargerItem()
+    {
+        try
+        {
+            Destroy(TargetItem);
+
+        }
+        catch (Exception)
+        {
+
+        }
     }
 }
