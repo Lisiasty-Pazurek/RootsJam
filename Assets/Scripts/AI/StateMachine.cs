@@ -16,6 +16,7 @@ public class StateMachine
 
     public void Tick()
     {
+
         Transition transition = null;
         try
         {

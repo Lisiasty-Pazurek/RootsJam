@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3c02929b6069f4f80e477af000e6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodcutterItemType: 
-  woodcutterItemParam: 
-  woodcutterWorkType: 
+  woodcutterItemType: WoodForSaw
+  woodcutterItemParam: ForSaw
+  woodcutterWorkType: PickWood
   WorkRaletedPrefab: {fileID: 0}
   TimeBeforeWorkDone: 1
 --- !u!212 &3471633072991683670

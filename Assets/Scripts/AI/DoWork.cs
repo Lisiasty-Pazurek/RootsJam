@@ -37,7 +37,7 @@ namespace Assets.Script.GRLO
                 case "CreateWood":
                     try
                     {
-                        Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(.5f,1.5f));
+                        Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1.5f, .5f));
                         _woodcutter.CreateInstance(_woodcutter.TargetItem.WorkRaletedPrefab, target, Quaternion.identity);
                     }
                     catch (Exception ex)
@@ -53,7 +53,7 @@ namespace Assets.Script.GRLO
                 case "PutWood":
                     try
                     {
-                        _woodcutter._haveWood = false;
+                        _woodcutter._haveWoodForStock = false;
                         Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f));
                         _woodcutter.CreateInstance(_woodcutter.TargetItem.WorkRaletedPrefab, target, Quaternion.identity);
                     }
@@ -66,6 +66,17 @@ namespace Assets.Script.GRLO
                         _woodcutter._haveAxeSharp = false;
                     }
 
+                    break;
+                case "Saw":
+                    _woodcutter._haveWoodForSaw = false;
+                    try
+                    {
+                        Vector3 target = _woodcutter.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 2f), 0, UnityEngine.Random.Range(-1.5f, .5f));
+                        _woodcutter.CreateInstance(_woodcutter.TargetItem.WorkRaletedPrefab, target, Quaternion.identity);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                     break;
                 case "PutAxe":
                     try
@@ -88,9 +99,14 @@ namespace Assets.Script.GRLO
 
                     break;
                 case "PickWood":
-                    _woodcutter._haveWood = true;
+                    if (_woodcutter.TargetItem.woodcutterItemParam == "ForSaw")
+                        _woodcutter._haveWoodForSaw = true;
+                    else if(_woodcutter.TargetItem.woodcutterItemParam == "Plank")
+                        _woodcutter._plankNo++;
+                    else
+                        _woodcutter._haveWoodForStock = true;
                     _woodcutter.TargetItem.pickMe();
-                    break;
+                    break;               
                 case "PickAxe":
                     _woodcutter._haveAxe = true;
                     if (_woodcutter.TargetItem.woodcutterItemParam == "NeedSharper")
@@ -102,6 +118,9 @@ namespace Assets.Script.GRLO
                     break;
                 case "AxeSharper":
                     _woodcutter._haveAxeSharp = true;
+                    break;
+                case "PlankBox":
+                    _woodcutter._plankNo = 0;
                     break;
                 default:
                     break;

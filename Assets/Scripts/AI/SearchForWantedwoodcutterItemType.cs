@@ -25,6 +25,7 @@ namespace Assets.Script.GRLO
 
         public void OnEnter()
         {
+            StateName = "SearchForWantedwoodcutterItemType";
             _woodcutter.WorkDone = false;
             if (_woodcutter._showDebugMsgs)
                 Debug.Log("Entered: " + StateName);
@@ -53,12 +54,35 @@ namespace Assets.Script.GRLO
         {
             bool nextItemAfterThis = true;
 
-            if (_woodcutter._haveWood)
+            if (_woodcutter._haveWoodForStock)
             {
                 _woodcutter.WantedwoodcutterItemType = "Woodpile";
                 return;
             }
-
+            if (_woodcutter._haveWoodForSaw)
+            {
+                _woodcutter.WantedwoodcutterItemType = "Saw";
+                return;
+            }
+            if (_woodcutter._plankNo > 0)
+            {
+                ForWoodcutter found;
+                found = UnityEngine.Object.FindObjectsOfType<ForWoodcutter>()
+                    .OrderBy(t => Vector3.Distance(_woodcutter.transform.position, t.transform.position))
+                    .Where(t => (t.ReservedFor < 0 && t.woodcutterItemType == "Plank"))
+                    .Take(pickFromNearest)
+                    .OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
+                    .FirstOrDefault();
+                if (found == null)
+                {
+                    _woodcutter.WantedwoodcutterItemType = "PlankBox";
+                }
+                else
+                {
+                    _woodcutter.WantedwoodcutterItemType = "Plank";
+                }
+                return;
+            }
             if (_woodcutter.currentItemNo >= 0 && _woodcutter.currentItemNo < _woodcutter.WantedWoodcutterItemTypeList?.Count)
             {
                 _woodcutter.WantedwoodcutterItemType = _woodcutter.WantedWoodcutterItemTypeList[_woodcutter.currentItemNo];
@@ -110,6 +134,11 @@ namespace Assets.Script.GRLO
     .Take(pickFromNearest)
     .OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
     .FirstOrDefault();
+            }
+
+            if (found == null)
+            {
+                _woodcutter.currentItemNo++;
             }
 
             return found;

@@ -37,7 +37,14 @@ public class WoodcutterBehavior : MonoBehaviour
     public bool _haveAxeSharp = true;
 
     [SerializeField]
-    public bool _haveWood = false;
+    public bool _haveWoodForStock = false;
+
+    [SerializeField]
+    public bool _haveWoodForSaw = false;
+
+    [SerializeField]
+    public int _plankNo = 0;
+
 
     Vector3 _lastPosition;
     float GlobalTimeStuck = 0f;
@@ -50,6 +57,8 @@ public class WoodcutterBehavior : MonoBehaviour
     [SerializeField]
     public bool _showDebugMsgs = true;
 
+    float noTargetTimer = 0f;
+
     NavMeshAgent navMeshAgent;
     private void Awake()
     {
@@ -59,6 +68,7 @@ public class WoodcutterBehavior : MonoBehaviour
 
     private void InitStateMachine()
     {
+
         _stateMachine = new StateMachine();
 
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -77,6 +87,7 @@ public class WoodcutterBehavior : MonoBehaviour
         At(moveToSelectedItem, searchForWantedItem, StuckForOverASecond());
         At(moveToSelectedItem, doWork, ReachedTargetItem());
         At(doWork, searchForWantedItem, () => WorkDone);
+        At(searchForWantedItem, lookAround, () => noTargetTimer > 3f);
         //At(harvest, search, TargetIsDepletedAndICanCarryMore());
         //At(harvest, returnToStockpile, InventoryFull());
         //At(returnToStockpile, placeResourcesInStockpile, ReachedStockpile());
@@ -87,7 +98,8 @@ public class WoodcutterBehavior : MonoBehaviour
         //At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f))); //to nie dzia³a
         // At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time))); //to dzia³a
         At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || (SeePlayerLastTime + 1f < Time.time && navMeshAgent.remainingDistance < 0.2f))));
-        At(lookAround, moveToSelectedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time));
+        At(lookAround, moveToSelectedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time && TargetItem != null));
+        At(lookAround, searchForWantedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time && TargetItem == null));
 
         _stateMachine.SetState(searchForWantedItem);
 
@@ -121,10 +133,18 @@ public class WoodcutterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Id == 2)
+        {
+            if (_showDebugMsgs)
+            {
+                Debug.Log("!!!");
+            }
+        }
         try
         {
             if (_stateMachine == null)
                 InitStateMachine();
+
             _stateMachine.Tick();
 
 
@@ -140,6 +160,15 @@ public class WoodcutterBehavior : MonoBehaviour
                 GlobalTimeStuck += Time.deltaTime;
             else
                 GlobalTimeStuck = 0;
+
+            if (_stateMachine._currentState.StateName == "SearchForWantedwoodcutterItemType")
+            {
+                noTargetTimer += Time.deltaTime;
+            }
+            else
+            {
+                noTargetTimer = 0f;
+            }
 
             _lastPosition = transform.position;
         }
