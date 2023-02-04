@@ -24,7 +24,7 @@ namespace Assets.Script.GRLO
             StateName = "MoveToSelectedItem";
         }
 
-        public string StateName { get; set; } 
+        public string StateName { get; set; }
 
         public void OnEnter()
         {
@@ -32,7 +32,7 @@ namespace Assets.Script.GRLO
             _navMeshAgent.enabled = true;
             _navMeshAgent.SetDestination(_woodcutter.TargetItem.transform.position);
             _woodcutter.TargetItem.ReservedFor = _woodcutter.Id;
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Entered: " + StateName);
         }
 
@@ -40,7 +40,7 @@ namespace Assets.Script.GRLO
         {
             _navMeshAgent.enabled = false;
             _woodcutter.TargetItem.ReservedFor = -1;
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Left: " + StateName);
         }
 

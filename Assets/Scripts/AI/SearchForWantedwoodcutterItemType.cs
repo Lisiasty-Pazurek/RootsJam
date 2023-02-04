@@ -25,13 +25,14 @@ namespace Assets.Script.GRLO
 
         public void OnEnter()
         {
-            if (_woodcutter.ShowDebugMsgs)
+            _woodcutter.WorkDone = false;
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Entered: " + StateName);
         }
 
         public void OnExit()
         {
-            if (_woodcutter.ShowDebugMsgs)
+            if (_woodcutter._showDebugMsgs)
                 Debug.Log("Left: " + StateName);
         }
 
@@ -41,32 +42,77 @@ namespace Assets.Script.GRLO
         {
             if (_woodcutter.WantedWoodcutterItemTypeList?.Count > 0)
             {
-                if (_woodcutter.currentItemNo >= 0 && _woodcutter.currentItemNo < _woodcutter.WantedWoodcutterItemTypeList?.Count)
-                {
-                    _woodcutter.WantedwoodcutterItemType = _woodcutter.WantedWoodcutterItemTypeList[_woodcutter.currentItemNo];
-                    _woodcutter.currentItemNo++;
-                }
-                else
-                {
-                    _woodcutter.WantedwoodcutterItemType = _woodcutter.WantedWoodcutterItemTypeList[0];
-                    _woodcutter.currentItemNo = 1;
-                }
+                GetWantedItemType();
             }
             else
-                _woodcutter.WantedwoodcutterItemType = "Axe";
+                _woodcutter.WantedwoodcutterItemType = "Patrol";
             _woodcutter.TargetItem = ChooseOneOfTheNearestItems(pickFromNearest);
         }
 
+        private void GetWantedItemType()
+        {
+            bool nextItemAfterThis = true;
+
+            if (_woodcutter._haveWood)
+            {
+                _woodcutter.WantedwoodcutterItemType = "Woodpile";
+                return;
+            }
+
+            if (_woodcutter.currentItemNo >= 0 && _woodcutter.currentItemNo < _woodcutter.WantedWoodcutterItemTypeList?.Count)
+            {
+                _woodcutter.WantedwoodcutterItemType = _woodcutter.WantedWoodcutterItemTypeList[_woodcutter.currentItemNo];
+
+            }
+            else
+            {
+                _woodcutter.WantedwoodcutterItemType = _woodcutter.WantedWoodcutterItemTypeList[0];
+                _woodcutter.currentItemNo = 0;
+            }
+            if (_woodcutter.WantedwoodcutterItemType.ToLower().Contains("tree"))
+            {
+                if (!_woodcutter._haveAxe)
+                {
+                    nextItemAfterThis = false;
+                    _woodcutter.WantedwoodcutterItemType = "Axe";
+                }
+                if (_woodcutter._haveAxe && !_woodcutter._haveAxeSharp)
+                {
+                    nextItemAfterThis = false;
+                    _woodcutter.WantedwoodcutterItemType = "AxeSharper";
+                }
+            }
+            if (_woodcutter.WantedwoodcutterItemType.ToLower().Contains("wood") && _woodcutter._haveAxe)
+            {
+                nextItemAfterThis = false;
+                _woodcutter.WantedwoodcutterItemType = "AxeRack";
+            }
+
+            if (nextItemAfterThis)
+                _woodcutter.currentItemNo++;
+        }
 
         private ForWoodcutter ChooseOneOfTheNearestItems(int pickFromNearest)
         {
-            return UnityEngine.Object.FindObjectsOfType<ForWoodcutter>()
-                .OrderByDescending(t => Vector3.Distance(_woodcutter.transform.position, t.transform.position))
+            ForWoodcutter found;
+            found = UnityEngine.Object.FindObjectsOfType<ForWoodcutter>()
+                .OrderBy(t => Vector3.Distance(_woodcutter.transform.position, t.transform.position))
                 .Where(t => (t.ReservedFor < 0 && t.woodcutterItemType == _woodcutter.WantedwoodcutterItemType))
                 .Take(pickFromNearest)
                 .OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
                 .FirstOrDefault();
-            //Order by descending weźmie obecnie najdalszą
+
+            if (found == null)
+            {
+                found = UnityEngine.Object.FindObjectsOfType<ForWoodcutter>()
+    .OrderBy(t => Vector3.Distance(_woodcutter.transform.position, t.transform.position))
+    .Where(t => (t.woodcutterItemType == _woodcutter.WantedwoodcutterItemType))
+    .Take(pickFromNearest)
+    .OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
+    .FirstOrDefault();
+            }
+
+            return found;
         }
     }
 }
