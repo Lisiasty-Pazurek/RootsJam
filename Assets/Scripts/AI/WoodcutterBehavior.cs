@@ -10,7 +10,7 @@ public class WoodcutterBehavior : MonoBehaviour
     [SerializeField]
     public int Id;
     private StateMachine _stateMachine;
-  
+
     [SerializeField]
     public ForWoodcutter TargetItem;
 
@@ -49,11 +49,19 @@ public class WoodcutterBehavior : MonoBehaviour
 
     [SerializeField]
     public bool _showDebugMsgs = true;
+
+    NavMeshAgent navMeshAgent;
     private void Awake()
+    {
+        InitStateMachine();
+
+    }
+
+    private void InitStateMachine()
     {
         _stateMachine = new StateMachine();
 
-        var navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
         var searchForWantedItem = new SearchForWantedwoodcutterItemType(this);
         var moveToSelectedItem = new MoveToSelectedItem(this, navMeshAgent);
@@ -75,8 +83,10 @@ public class WoodcutterBehavior : MonoBehaviour
         //At(placeResourcesInStockpile, search, () => _gathered == 0);
 
         _stateMachine.AddAnyTransition(chase, () => SeePlayer);
-        _stateMachine.AddAnyTransition(searchForWantedItem, () => GlobalTimeStuck > 4f);
-        At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f)));
+        _stateMachine.AddAnyTransition(searchForWantedItem, () => GlobalTimeStuck > 10f);
+        //At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || navMeshAgent.remainingDistance < 0.2f))); //to nie dzia³a
+        // At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time))); //to dzia³a
+        At(chase, lookAround, () => (SeePlayer == false && (SeePlayerLastTime + ChaseTime < Time.time || (SeePlayerLastTime + 1f < Time.time && navMeshAgent.remainingDistance < 0.2f))));
         At(lookAround, moveToSelectedItem, () => (LookAround == true && SeePlayerLastTime + ChaseTime < Time.time));
 
         _stateMachine.SetState(searchForWantedItem);
@@ -100,7 +110,6 @@ public class WoodcutterBehavior : MonoBehaviour
         //Func<bool> InventoryFull() => () => _gathered >= _maxCarried;
         //Func<bool> ReachedStockpile() => () => StockPile != null &&
         //                                       Vector3.Distance(transform.position, StockPile.transform.position) < 1f;
-
     }
 
     // Start is called before the first frame update
@@ -112,19 +121,32 @@ public class WoodcutterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _stateMachine.Tick();
-        StateName = _stateMachine._currentState.StateName;
-        if (_stateMachine._currentState.StateName == "Chase")
-            ChasingGraphicObject.SetActive(true);
-        else
-            ChasingGraphicObject.SetActive(false);
+        try
+        {
+            if (_stateMachine == null)
+                InitStateMachine();
+            _stateMachine.Tick();
 
-        if (Vector3.Distance(transform.position, _lastPosition) == 0f)
-            GlobalTimeStuck += Time.deltaTime;
-        else
-            GlobalTimeStuck = 0;
 
-        _lastPosition = transform.position;
+
+            StateName = _stateMachine._currentState.StateName;
+            if (_stateMachine._currentState.StateName == "Chase")
+                ChasingGraphicObject.SetActive(true);
+            else
+                ChasingGraphicObject.SetActive(false);
+
+            // if (Vector3.Distance(transform.position, _lastPosition) == 0f) //chyba nie dzia³a
+            if (navMeshAgent.enabled && (Vector3.Distance(transform.position, _lastPosition) == 0f) && !SeePlayer)
+                GlobalTimeStuck += Time.deltaTime;
+            else
+                GlobalTimeStuck = 0;
+
+            _lastPosition = transform.position;
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
