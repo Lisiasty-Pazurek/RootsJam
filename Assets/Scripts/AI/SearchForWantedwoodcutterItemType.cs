@@ -73,7 +73,7 @@ namespace Assets.Script.GRLO
                     .Take(pickFromNearest)
                     .OrderBy(t => UnityEngine.Random.Range(0, int.MaxValue))
                     .FirstOrDefault();
-                if (found == null)
+                if (found == null || _woodcutter._plankNo > 1)
                 {
                     _woodcutter.WantedwoodcutterItemType = "PlankBox";
                 }
