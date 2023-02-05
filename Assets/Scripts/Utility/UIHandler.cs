@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     public GameObject player;
+    public PlayerController playerController;
 
     public int Score = 0;
     [SerializeField] public int maxScore = 6;
@@ -14,12 +15,13 @@ public class UIHandler : MonoBehaviour
 
     [SerializeField] public Canvas EndGame;
     [SerializeField] public Canvas DeadGame;   
+    [SerializeField] public Image cantRun;
 
     public int hearts = 3;
     // Start is called before the first frame update
     void Start()
     {
-
+        playerController = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -27,11 +29,12 @@ public class UIHandler : MonoBehaviour
         ChangeHP();
         ChangeAcorns();
         CheckPoints();
+        cantRun.enabled = playerController.runTime <= 0;
     }
     // Update is called once per frame
     void ChangeHP()
     {
-        hearts = player.GetComponent<PlayerController>().cHP;
+        hearts = playerController.cHP;
         hpText.text = hearts.ToString();
     }
 
@@ -48,7 +51,7 @@ public class UIHandler : MonoBehaviour
             PlayerWin();
         }
 
-        if (player.GetComponent<PlayerController>().cHP <1)
+        if (playerController.cHP <1)
         {PlayerDied();}
     }
 
@@ -62,5 +65,8 @@ public class UIHandler : MonoBehaviour
         EndGame.enabled = true;
     }
 
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

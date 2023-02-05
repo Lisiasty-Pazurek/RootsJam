@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.GetComponent<WoodcutterBehavior>() != null)
         {
             Debug.Log("Collision with : " + other.gameObject.name + " Jebłem to jebłem");
-            invincibleTime = 1f;
+            invincibleTime = 2f;
             cHP--;
         }
     }
