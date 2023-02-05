@@ -25,5 +25,10 @@ public class ForWoodcutter : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void RootIt()
+    {
+
+    }
 }
 
