@@ -30,7 +30,11 @@ public class Interactable : MonoBehaviour
             PickUp(other);
         }
 
-        else PlantRoots();
+        else 
+        {
+            PlantRoots();
+            other.GetComponent<PlayerController>().blockMoveTime = 2f;
+        }
 
     }
 

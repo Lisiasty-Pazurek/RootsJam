@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public string aState; 
 
     public float pickUpTime = 1f;
+    public float blockMoveTime;
     [SerializeField]
     public Transform itemSlot;
 
@@ -34,9 +35,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
             pickUpTime -= Time.deltaTime;
+            blockMoveTime -= Time.deltaTime;
             
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
+
+
  //           if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Horizontal") != 0) {aState == "isWalking";}
             if (horizontal < 0 ) {cRenderer.flipX = true;}
             else {cRenderer.flipX = false;}
@@ -47,20 +51,28 @@ public class PlayerController : MonoBehaviour
 
             agent.Move(moveDirection);   
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && carriedItem == null)
+            if (blockMoveTime > 0)
             {
-                currentSpeed = speed * 1.8f;
+                currentSpeed = speed * 0.05f;
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                currentSpeed = speed;
+            else {
+                if (currentSpeed < speed ) {currentSpeed = speed;}
+                if (Input.GetKeyDown(KeyCode.LeftShift) && carriedItem == null)
+                {
+                    currentSpeed = speed * 1.8f;
+                }
+                if (Input.GetKeyUp(KeyCode.LeftShift) || carriedItem != null)
+                {
+                    currentSpeed = speed;
+                }
             }
 
             if (Input.GetKeyUp(KeyCode.F) && carriedItem != null && pickUpTime <= 0)
             { 
                 carriedItem.GetComponent<Interactable>().PutDown(this);
-                
             }
+            
+
 
     }
 
