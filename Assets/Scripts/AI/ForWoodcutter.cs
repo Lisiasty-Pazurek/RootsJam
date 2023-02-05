@@ -18,6 +18,8 @@ public class ForWoodcutter : MonoBehaviour
     public string woodcutterWorkType = "";
     [SerializeField]
     public GameObject WorkRaletedPrefab;
+    [SerializeField]
+    public bool GivePoint = false;
     public float TimeBeforeWorkDone
     {
         get
