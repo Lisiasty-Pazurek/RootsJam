@@ -14,8 +14,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer cRenderer;
     public string aState; 
 
+    public float pickUpTime = 1f;
     [SerializeField]
     public Transform itemSlot;
+
+    public GameObject carriedItem = null;
 
     // Esay toggle in editor to swap between click to move and wasd movement
     [SerializeField] public bool clickToMove;
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+            pickUpTime -= Time.deltaTime;
             
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
             agent.Move(moveDirection);   
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && carriedItem == null)
             {
                 currentSpeed = speed * 1.8f;
             }
@@ -52,7 +55,12 @@ public class PlayerController : MonoBehaviour
             {
                 currentSpeed = speed;
             }
-      
+
+            if (Input.GetKeyUp(KeyCode.F) && carriedItem != null && pickUpTime <= 0)
+            { 
+                carriedItem.GetComponent<Interactable>().PutDown(this);
+                
+            }
 
     }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6582807, g: 0.7735941, b: 0.81838614, a: 1}
+  m_IndirectSpecularColor: {r: 0.6582079, g: 0.7735641, b: 0.81832343, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -585,7 +585,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -680,7 +680,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &205557342
 PrefabInstance:
@@ -1238,91 +1238,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4236047844320133139, guid: c4c0e3dc15fe13b4bbec3aa995b55f86, type: 3}
   m_PrefabInstance: {fileID: 310669150}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &347780433
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 479575363435853136, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853744024493590049, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076792, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: WantedWoodcutterItemTypeList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076792, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: WantedWoodcutterItemTypeList.Array.data[1]
-      value: Tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076792, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: WantedWoodcutterItemTypeList.Array.data[2]
-      value: Tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076792, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: WantedWoodcutterItemTypeList.Array.data[3]
-      value: Wood
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076793, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645588076796, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_Name
-      value: Woodcutter (0) - Scinacz
-      objectReference: {fileID: 0}
-    - target: {fileID: 4897586645744795328, guid: 65b742c519609894cab0465cf83e434c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 65b742c519609894cab0465cf83e434c, type: 3}
 --- !u!1001 &366800323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1938,7 +1853,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &590609741
 PrefabInstance:

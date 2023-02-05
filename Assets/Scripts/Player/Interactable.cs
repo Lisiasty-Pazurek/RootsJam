@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[RequireComponent (typeof(ForWoodcutter))]
 public class Interactable : MonoBehaviour
 {
     bool canInteract = true;
-    bool itemState = false;
+    // bool itemState = false;
+
+    [SerializeField] bool canBeCarried = false;
 
     private void OnTriggerStay(Collider other) 
     {
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.F)) 
+        if (other.tag == "Player" && Input.GetKeyUp(KeyCode.F)) 
         { 
             Interact(other);
         }
@@ -20,11 +23,39 @@ public class Interactable : MonoBehaviour
     }
 
     public void Interact (Collider other)
-    {
-//        if (!canInteract) return;
-        // if (!itemState) itemState = true; 
+    {      
+        if  (other.GetComponent<PlayerController>().carriedItem == null && this.canBeCarried)
+        {
+            PickUp(other);
+        }
 
+        else PlantRoots();
+
+    }
+
+    public void PickUp (Collider other)
+    {
         this.transform.SetParent(other.GetComponent<PlayerController>().itemSlot);
         this.transform.position = other.GetComponent<PlayerController>().itemSlot.transform.position;
+        other.GetComponent<PlayerController>().carriedItem = this.gameObject;
+        other.GetComponent<PlayerController>().pickUpTime = 1f;
+        this.GetComponent<ForWoodcutter>().ReservedFor = 999;
+        
+    }
+
+    public void PutDown (PlayerController player)
+    {
+        this.transform.SetParent(GameObject.Find("CarryOn").transform);
+        this.transform.position = player.transform.position;
+        player.carriedItem = null;
+       ForWoodcutter fw = this.GetComponent<ForWoodcutter>();
+       fw.ReservedFor = -1;
+    //    fw.RootIt();
+
+    }
+
+    public void PlantRoots()
+    {
+        this.GetComponent<ForWoodcutter>().RootIt();
     }
 }
