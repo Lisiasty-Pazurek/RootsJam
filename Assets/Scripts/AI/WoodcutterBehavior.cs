@@ -21,7 +21,7 @@ public class WoodcutterBehavior : MonoBehaviour
     public float ChaseTime = 4f;
 
     [SerializeField]
-    public float moveToDistance = 0.5f;
+    public float moveToDistance = 1f;
 
     [SerializeField]
     public GameObject ChasingGraphicObject;
