@@ -11,6 +11,10 @@ public class WoodyAnimator : MonoBehaviour
     private SpriteRenderer eRenderer;
     private WoodcutterBehavior woodcutterState;
 
+    [SerializeField] public List<SpriteRenderer> carriedObject;
+    [SerializeField] public GameObject Wood;
+    [SerializeField] public GameObject Axe;
+    [SerializeField] public GameObject Plank;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,16 @@ public class WoodyAnimator : MonoBehaviour
             eAnimator.SetBool("isWorking", true);
         }
         else eAnimator.SetBool("isWorking", false);
+
+        carriedObjectHandler();
+
+    }
+
+    public void carriedObjectHandler ()
+    {
+        Axe.SetActive(woodcutterState._haveAxe);
+        Wood.SetActive(woodcutterState._haveWoodForSaw || woodcutterState._haveWoodForStock);
+        Plank.SetActive(woodcutterState._plankNo > 0);
 
     }
 }

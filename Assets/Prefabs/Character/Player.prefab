@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4147697880795487646}
   - component: {fileID: 4147697880795487647}
   - component: {fileID: 4147697880795487644}
-  - component: {fileID: 4147697880795487633}
+  - component: {fileID: 3146663611291489246}
   - component: {fileID: 4147697880795487634}
   - component: {fileID: 4147697880795487643}
   m_Layer: 0
@@ -140,10 +140,14 @@ MonoBehaviour:
   agent: {fileID: 4147697880795487646}
   speed: 3
   currentSpeed: 3
+  invincibleTime: 3
   cAnimator: {fileID: 0}
   cRenderer: {fileID: 0}
   aState: 
+  pickUpTime: 1
+  blockMoveTime: 0
   itemSlot: {fileID: 4147697880893037889}
+  carriedItem: {fileID: 0}
   clickToMove: 0
 --- !u!195 &4147697880795487646
 NavMeshAgent:
@@ -197,8 +201,8 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!136 &4147697880795487633
-CapsuleCollider:
+--- !u!135 &3146663611291489246
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -207,10 +211,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.2
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!95 &4147697880795487634
 Animator:
   serializedVersion: 5

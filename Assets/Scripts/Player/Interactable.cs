@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     // bool itemState = false;
 
     [SerializeField] bool canBeCarried = false;
-    [SerializeField] GameObject rootsOverlay;
+    [SerializeField] GameObject rootsOverlay = null;
 
     private void OnTriggerStay(Collider other) 
     {
@@ -71,6 +71,13 @@ public class Interactable : MonoBehaviour
         {
             rootsOverlay.SetActive(state);
         }
+    }
+
+    void Update ()
+    {
+        
+        rootsOverlay.SetActive(this.GetComponent<ForWoodcutter>().rooted);
+
     }
 
 }

@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent agent;
     public float speed = 3f;
     public float currentSpeed = 3f;
+    [SerializeField]
+    public int cHP;
+    public float invincibleTime = -101f;
     public Animator cAnimator;
     public SpriteRenderer cRenderer;
     public string aState; 
@@ -36,12 +39,12 @@ public class PlayerController : MonoBehaviour
     {
             pickUpTime -= Time.deltaTime;
             blockMoveTime -= Time.deltaTime;
+            if  (invincibleTime >-100)
+            invincibleTime -= Time.deltaTime;
             
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-
- //           if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Horizontal") != 0) {aState == "isWalking";}
             if (horizontal < 0 ) {cRenderer.flipX = true;}
             else {cRenderer.flipX = false;}
             Animate();
@@ -51,9 +54,22 @@ public class PlayerController : MonoBehaviour
 
             agent.Move(moveDirection);   
 
+            if (invincibleTime > 0)
+            {
+                currentSpeed = speed *3f;
+                this.gameObject.GetComponent<SphereCollider>().enabled = false;
+            }
+            else {
+    if      (invincibleTime>-100)
+    {
+        this.gameObject.GetComponent<SphereCollider>().enabled = true;
+        currentSpeed = speed;
+        invincibleTime = -101;
+    }
             if (blockMoveTime > 0)
             {
                 currentSpeed = speed * 0.05f;
+                
             }
             else {
                 if (currentSpeed < speed ) {currentSpeed = speed;}
@@ -65,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 {
                     currentSpeed = speed;
                 }
+            }
             }
 
             if (Input.GetKeyUp(KeyCode.F) && carriedItem != null && pickUpTime <= 0)
@@ -91,7 +108,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.GetComponent<WoodcutterBehavior>() != null)
         {
-            Debug.Log("Collision with : " + other.gameObject.name + " Jebłem to jebłem");            
+            Debug.Log("Collision with : " + other.gameObject.name + " Jebłem to jebłem");  
+            invincibleTime = 1f;
+            cHP --;
+
         }
      }
 }
