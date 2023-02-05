@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 39981293601677169}
   - component: {fileID: 1177128387379030091}
   - component: {fileID: 7125018982462663467}
+  - component: {fileID: 7305315718549313550}
   m_Layer: 0
   m_Name: wiorownica
   m_TagString: Untagged
@@ -222,3 +223,16 @@ MonoBehaviour:
   canBeCarried: 0
   rootsOverlay: {fileID: 0}
   laughSound: {fileID: 0}
+--- !u!65 &7305315718549313550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417998238870593782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.95, y: 3.72, z: 1.1425734}
+  m_Center: {x: 0, y: 1.86, z: -0.070307136}
