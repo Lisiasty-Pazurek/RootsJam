@@ -14,9 +14,13 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] AudioClip laughSound;
 
+    
+    [SerializeField] UIHandler uiHandler;
+
 
     public void Start()
     {
+        uiHandler = GameObject.FindGameObjectWithTag("UIHandler").GetComponent<UIHandler>();
         laughSound = Resources.Load<AudioClip>("Audio/evilLaugh2.mp3");
     }
 
@@ -77,7 +81,8 @@ public class Interactable : MonoBehaviour
     {
         this.GetComponent<ForWoodcutter>().RootIt();
         RootedHandler(true);
-
+        if (this.GetComponent<ForWoodcutter>().GivePoint)
+        uiHandler.Score ++;
     }
 
     public void RootedHandler(bool state)
