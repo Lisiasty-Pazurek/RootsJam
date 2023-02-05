@@ -12,6 +12,15 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool canBeCarried = false;
     [SerializeField] GameObject rootsOverlay = null;
 
+    [SerializeField] AudioClip laughSound ;
+
+
+    public void Start ()
+    {
+        laughSound = Resources.Load<AudioClip>("Audio/evilLaugh2.mp3");
+    }
+
+
     private void OnTriggerStay(Collider other) 
     {
         if (other.tag == "Player" && Input.GetKeyUp(KeyCode.F)) 
@@ -34,6 +43,7 @@ public class Interactable : MonoBehaviour
         {
             PlantRoots();
             other.GetComponent<PlayerController>().blockMoveTime = 2f;
+//            other.GetComponent<AudioSource>().Play(Resources.Load<AudioClip>("Audio/evilLaugh2.mp3"));
         }
 
     }
@@ -63,6 +73,7 @@ public class Interactable : MonoBehaviour
     {
         this.GetComponent<ForWoodcutter>().RootIt();
         RootedHandler(true);
+        
     }
 
     public void RootedHandler (bool state)
@@ -75,7 +86,7 @@ public class Interactable : MonoBehaviour
 
     void Update ()
     {
-        
+        if (canBeCarried == false)
         rootsOverlay.SetActive(this.GetComponent<ForWoodcutter>().rooted);
 
     }

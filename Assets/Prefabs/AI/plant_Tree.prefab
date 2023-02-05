@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1854116, y: 9.57, z: 0.76720333}
-  m_Center: {x: 0.52603406, y: 4.785, z: 0.21732533}
+  m_Size: {x: 1.6683923, y: 9.57, z: 1.8928621}
+  m_Center: {x: 0.5612466, y: 4.785, z: 0.14914942}
 --- !u!114 &2519031252632297921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 3517658167278677141}
+  laughSound: {fileID: 0}
 --- !u!1 &3517658167278677141
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5630df00c6119bf48bd4fe64178c579c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7100247527122866465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: 0.47}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
