@@ -18,8 +18,18 @@ public class ForWoodcutter : MonoBehaviour
     public string woodcutterWorkType = "";
     [SerializeField]
     public GameObject WorkRaletedPrefab;
+    public float TimeBeforeWorkDone
+    {
+        get
+        {
+            if (rooted)
+                return TimeBeforeWorkDoneRooted;
+            else
+                return TimeBeforeWorkDoneUnrooted;
+        }
+    }
     [SerializeField]
-    public float TimeBeforeWorkDone = 1f;
+    public float TimeBeforeWorkDoneUnrooted = 1f;
     [SerializeField]
     public float TimeBeforeWorkDoneRooted = 4f;
     [SerializeField]
@@ -30,12 +40,9 @@ public class ForWoodcutter : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void RootIt()
+    public void RootIt(bool root = true)
     {
-        if (rooted)
-            return;
-        rooted = true;
-        TimeBeforeWorkDone = TimeBeforeWorkDoneRooted;
+        rooted = root;
     }
 }
 
