@@ -9,6 +9,8 @@ using UnityEngine;
 public class ForWoodcutter : MonoBehaviour
 {
     [SerializeField]
+    bool rooted = false;
+    [SerializeField]
     public string woodcutterItemType = "";
     [SerializeField]
     public string woodcutterItemParam = "";
@@ -19,6 +21,8 @@ public class ForWoodcutter : MonoBehaviour
     [SerializeField]
     public float TimeBeforeWorkDone = 1f;
     [SerializeField]
+    public float TimeBeforeWorkDoneRooted = 4f;
+    [SerializeField]
     public int ReservedFor { get; set; } = -1;
 
     public void pickMe()
@@ -28,7 +32,10 @@ public class ForWoodcutter : MonoBehaviour
 
     public void RootIt()
     {
-
+        if (rooted)
+            return;
+        rooted = true;
+        TimeBeforeWorkDone = TimeBeforeWorkDoneRooted;
     }
 }
 
