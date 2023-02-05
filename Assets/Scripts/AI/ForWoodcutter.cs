@@ -9,7 +9,7 @@ using UnityEngine;
 public class ForWoodcutter : MonoBehaviour
 {
     [SerializeField]
-    bool rooted = false;
+    public bool rooted = false;
     [SerializeField]
     public string woodcutterItemType = "";
     [SerializeField]

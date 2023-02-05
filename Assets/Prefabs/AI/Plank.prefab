@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2265882069484160497}
   - component: {fileID: -8035270122443078589}
   - component: {fileID: 7981228328185808637}
+  - component: {fileID: 4626319364002110354}
+  - component: {fileID: 2722443813016883849}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Untagged
@@ -45,11 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3c02929b6069f4f80e477af000e6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rooted: 0
   woodcutterItemType: Plank
   woodcutterItemParam: Plank
   woodcutterWorkType: PickWood
   WorkRaletedPrefab: {fileID: 0}
-  TimeBeforeWorkDone: 1
+  TimeBeforeWorkDoneUnrooted: 1
+  TimeBeforeWorkDoneRooted: 4
 --- !u!212 &7981228328185808637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,3 +106,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4626319364002110354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416752728463838001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad51f96a288a024eaa5ed88ab6b44d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeCarried: 1
+--- !u!65 &2722443813016883849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416752728463838001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.023594, y: 0.4026386, z: 0.5164447}
+  m_Center: {x: 0.047706664, y: 0.2013193, z: -0.03536597}
