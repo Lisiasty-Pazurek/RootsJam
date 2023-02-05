@@ -21,6 +21,12 @@ public class WoodcutterBehavior : MonoBehaviour
     public float ChaseTime = 4f;
 
     [SerializeField]
+    public float NormalSpeed;
+
+    [SerializeField]
+    public float ChaseSpeed;
+
+    [SerializeField]
     public float moveToDistance = 1f;
 
     [SerializeField]
@@ -157,9 +163,15 @@ public class WoodcutterBehavior : MonoBehaviour
 
             StateName = _stateMachine._currentState.StateName;
             if (_stateMachine._currentState.StateName == "Chase")
+            {
                 ChasingGraphicObject.SetActive(true);
+                navMeshAgent.speed = ChaseSpeed;
+            }
             else
+            {
                 ChasingGraphicObject.SetActive(false);
+                navMeshAgent.speed = NormalSpeed;
+            }
 
             // if (Vector3.Distance(transform.position, _lastPosition) == 0f) //chyba nie dzia�a
             if (navMeshAgent.enabled && (Vector3.Distance(transform.position, _lastPosition) == 0f) && !SeePlayer)
