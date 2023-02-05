@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 3f;
     public float currentSpeed = 3f;
     [SerializeField]
-    public int cHP;
+    public int cHP = 5;
 
     [SerializeField]
     public float runTime = 3f;
@@ -145,7 +145,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collision with : " + other.gameObject.name + " Jebłem to jebłem");
             invincibleTime = 1f;
             cHP--;
-
         }
     }
+
+    
 }

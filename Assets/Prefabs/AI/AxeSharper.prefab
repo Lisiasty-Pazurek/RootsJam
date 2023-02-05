@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 8972668760635226487}
+  laughSound: {fileID: 8300000, guid: 35c122c4ca42f00409b447943322dcce, type: 3}
 --- !u!65 &6051424702195681540
 BoxCollider:
   m_ObjectHideFlags: 0
