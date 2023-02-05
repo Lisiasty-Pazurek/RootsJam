@@ -72,8 +72,6 @@ public class PlayerController : MonoBehaviour
                 carriedItem.GetComponent<Interactable>().PutDown(this);
             }
             
-
-
     }
 
 
@@ -88,8 +86,12 @@ public class PlayerController : MonoBehaviour
 
     
 
-    // private void OnCollisionEnter(Collision other) 
-    // {
-    //     Debug.Log("Collision with : " + other.gameObject.name );
-    // }
+     private void OnCollisionEnter(Collision other) 
+     {
+
+        if (other.gameObject.GetComponent<WoodcutterBehavior>() != null)
+        {
+            Debug.Log("Collision with : " + other.gameObject.name + " Jebłem to jebłem");            
+        }
+     }
 }
