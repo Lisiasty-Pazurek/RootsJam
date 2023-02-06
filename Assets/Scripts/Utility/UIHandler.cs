@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 {
     public GameObject player;
     public PlayerController playerController;
 
+    public GameObject activeObjects;
+
     public int Score = 0;
     [SerializeField] public int maxScore = 6;
     [SerializeField] public Text hpText;
     [SerializeField] public Text Points;
 
-    [SerializeField] public Canvas EndGame;
-    [SerializeField] public Canvas DeadGame;   
+    [SerializeField] public Canvas startGame;
+    [SerializeField] public Canvas playGame;
+    [SerializeField] public Canvas endGame;
+    [SerializeField] public Canvas deadGame;   
     [SerializeField] public Image cantRun;
 
-    public int hearts = 3;
+    public int hearts = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +36,14 @@ public class UIHandler : MonoBehaviour
         CheckPoints();
         cantRun.enabled = playerController.runTime <= 0;
     }
-    // Update is called once per frame
+
+    public void StartGame()
+    {
+        startGame.enabled = false;
+        playGame.enabled = true;
+        activeObjects.SetActive(true);
+    }
+
     void ChangeHP()
     {
         hearts = playerController.cHP;
@@ -57,12 +69,19 @@ public class UIHandler : MonoBehaviour
 
     void PlayerDied ()
     {
-        DeadGame.enabled = true;
+        deadGame.enabled = true;
+        activeObjects.SetActive(false);
     }
 
     void PlayerWin ()
     {
-        EndGame.enabled = true;
+        endGame.enabled = true;
+        activeObjects.SetActive(false);
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene("Level001");
     }
 
     public void QuitGame()
