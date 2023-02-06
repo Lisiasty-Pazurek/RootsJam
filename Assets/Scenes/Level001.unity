@@ -2579,6 +2579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 1
   rootsOverlay: {fileID: 0}
+  rootsAnimation: {fileID: 0}
   laughSound: {fileID: 0}
   uiHandler: {fileID: 0}
 --- !u!114 &520228542
@@ -2885,6 +2886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 1
   rootsOverlay: {fileID: 0}
+  rootsAnimation: {fileID: 0}
   laughSound: {fileID: 0}
   uiHandler: {fileID: 0}
 --- !u!65 &588136892

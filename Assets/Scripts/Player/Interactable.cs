@@ -10,9 +10,12 @@ public class Interactable : MonoBehaviour
     // bool itemState = false;
 
     [SerializeField] bool canBeCarried = false;
-    [SerializeField] GameObject rootsOverlay = null;
+    [SerializeField] SpriteRenderer rootsOverlay = null;
+    [SerializeField] Animation rootsAnimation;
     [SerializeField] AudioClip laughSound;
     [SerializeField] UIHandler uiHandler;
+
+
 
 
     public void Start()
@@ -48,6 +51,7 @@ public class Interactable : MonoBehaviour
                 other.GetComponent<PlayerController>().blockMoveTime = 2f;
                 other.GetComponent<AudioSource>().PlayOneShot(laughSound);
 
+
             }
         }
 
@@ -77,6 +81,7 @@ public class Interactable : MonoBehaviour
     public void PlantRoots()
     {
         this.GetComponent<ForWoodcutter>().RootIt();
+        rootsAnimation.Play();
         RootedHandler(true);
         if (this.GetComponent<ForWoodcutter>().GivePoint)
         uiHandler.Score ++;
@@ -86,14 +91,14 @@ public class Interactable : MonoBehaviour
     {
         if (this.GetComponent<ForWoodcutter>().rooted)
         {
-            rootsOverlay.SetActive(state);
+            rootsOverlay.enabled = state;
         }
     }
 
     void Update()
     {
         if (canBeCarried == false)
-            rootsOverlay.SetActive(this.GetComponent<ForWoodcutter>().rooted);
+        rootsOverlay.enabled = this.GetComponent<ForWoodcutter>().rooted;
 
     }
 
