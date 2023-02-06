@@ -52,6 +52,7 @@ MonoBehaviour:
   woodcutterItemParam: Plank
   woodcutterWorkType: PickWood
   WorkRaletedPrefab: {fileID: 0}
+  GivePoint: 0
   TimeBeforeWorkDoneUnrooted: 1
   TimeBeforeWorkDoneRooted: 4
 --- !u!212 &7981228328185808637
@@ -92,8 +93,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1441659481
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b8f97f22c5e52834dae185568171a262, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +106,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4626319364002110354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 1
   rootsOverlay: {fileID: 0}
+  laughSound: {fileID: 0}
+  uiHandler: {fileID: 0}
 --- !u!65 &2722443813016883849
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -69,14 +69,14 @@ public class PlayerController : MonoBehaviour
         if (invincibleTime > 0)
         {
             currentSpeed = speed * 3f;
-            this.gameObject.GetComponent<SphereCollider>().enabled = false;
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             restTime = restTimeMax;
         }
         else
         {
             if (invincibleTime > -100)
             {
-                this.gameObject.GetComponent<SphereCollider>().enabled = true;
+                this.gameObject.GetComponent<CapsuleCollider>().enabled = true;
                 currentSpeed = speed;
                 invincibleTime = -101;
             }

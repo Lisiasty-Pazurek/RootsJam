@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549503202510702591}
-  m_LocalRotation: {x: 0, y: -0, z: 0.8377187, w: -0.54610205}
+  m_LocalRotation: {x: 0, y: -0, z: 0.83786166, w: -0.54588264}
   m_LocalPosition: {x: -1.22, y: 0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2536099893206380798}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -473.8}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -473.83}
 --- !u!212 &7100934407097204599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1441659481
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a684392c68755e149aed4bc19c1f9861, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &5201539296043855538
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   woodcutterItemParam: 
   woodcutterWorkType: PickAxe
   WorkRaletedPrefab: {fileID: 0}
+  GivePoint: 0
   TimeBeforeWorkDoneUnrooted: 1
   TimeBeforeWorkDoneRooted: 4
 --- !u!114 &8698450196900006918
@@ -152,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 1
   rootsOverlay: {fileID: 0}
+  laughSound: {fileID: 0}
+  uiHandler: {fileID: 0}
 --- !u!65 &4924318421317758694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,5 +166,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.69000006, y: 1.9535084, z: 0.77081203}
-  m_Center: {x: 0.0000004835979, y: 0.6332467, z: 0.02133125}
+  m_Size: {x: 1.0558193, y: 1.4237752, z: 1.2747803}
+  m_Center: {x: 0.029384479, y: 0.3683802, z: 0.076967716}

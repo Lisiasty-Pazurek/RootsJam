@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SpriteSorting
+    uniqueID: 2853307815
+    locked: 0

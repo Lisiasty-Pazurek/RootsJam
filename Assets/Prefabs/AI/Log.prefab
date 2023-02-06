@@ -52,6 +52,7 @@ MonoBehaviour:
   woodcutterItemParam: ForSaw
   woodcutterWorkType: PickWood
   WorkRaletedPrefab: {fileID: 0}
+  GivePoint: 0
   TimeBeforeWorkDoneUnrooted: 1
   TimeBeforeWorkDoneRooted: 4
 --- !u!212 &3471633072991683670
@@ -92,8 +93,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1441659481
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1e3321bbe41d601408c8335a942e8e8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +106,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &6490106514882964394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeCarried: 1
+  rootsOverlay: {fileID: 0}
+  laughSound: {fileID: 0}
+  uiHandler: {fileID: 0}
 --- !u!65 &3907007124141934898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -130,5 +134,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.45, y: 0.74, z: 0.6706148}
-  m_Center: {x: 0, y: 0.37, z: -0.08975676}
+  m_Size: {x: 4, y: 0.74, z: 1}
+  m_Center: {x: 0, y: 0.37, z: -0.2}
