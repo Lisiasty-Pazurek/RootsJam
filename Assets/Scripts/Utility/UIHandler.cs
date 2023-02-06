@@ -12,6 +12,7 @@ public class UIHandler : MonoBehaviour
     public GameObject activeObjects;
 
     public int Score = 0;
+    public int enemyScore = 0;
     [SerializeField] public int maxScore = 6;
     [SerializeField] public Text hpText;
     [SerializeField] public Text Points;
