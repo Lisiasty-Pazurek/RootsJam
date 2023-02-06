@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float invincibleTime = -101f;
     public Animator cAnimator;
     public SpriteRenderer cRenderer;
+    public AudioSource cAudioSource;
     public string aState;
 
     public float pickUpTime = 1f;
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         cAnimator = this.GetComponent<Animator>();
         cRenderer = this.GetComponentInChildren<SpriteRenderer>();
-
+        cAudioSource = this.GetComponent<AudioSource>();
+        
     }
 
     void Update()

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 3517658167278677141}
-  laughSound: {fileID: 0}
+  laughSound: {fileID: 8300000, guid: 371d7da1974c0bb42b81cdead0f8976e, type: 3}
   uiHandler: {fileID: 0}
 --- !u!1 &7100247527122866465
 GameObject:

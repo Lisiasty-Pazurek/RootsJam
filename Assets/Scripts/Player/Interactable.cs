@@ -11,17 +11,14 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] bool canBeCarried = false;
     [SerializeField] GameObject rootsOverlay = null;
-
     [SerializeField] AudioClip laughSound;
-
-    
     [SerializeField] UIHandler uiHandler;
 
 
     public void Start()
     {
         uiHandler = GameObject.FindGameObjectWithTag("UIHandler").GetComponent<UIHandler>();
-        laughSound = Resources.Load<AudioClip>("Audio/evilLaugh2.mp3");
+        
     }
 
 
@@ -49,7 +46,7 @@ public class Interactable : MonoBehaviour
             {
                 PlantRoots();
                 other.GetComponent<PlayerController>().blockMoveTime = 2f;
-                //            other.GetComponent<AudioSource>().Play(Resources.Load<AudioClip>("Audio/evilLaugh2.mp3"));
+                other.GetComponent<AudioSource>().PlayOneShot(laughSound);
 
             }
         }

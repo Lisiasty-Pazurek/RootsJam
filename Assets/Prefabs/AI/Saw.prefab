@@ -268,5 +268,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 6959737396698483813}
-  laughSound: {fileID: 8300000, guid: b02d5e3b7b6c5be4d924016cd703e4f9, type: 3}
+  laughSound: {fileID: 8300000, guid: 35c122c4ca42f00409b447943322dcce, type: 3}
   uiHandler: {fileID: 0}
