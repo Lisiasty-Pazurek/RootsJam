@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3778556841640625342}
   - component: {fileID: 2519031252632297921}
   - component: {fileID: 3201667289441027231}
+  - component: {fileID: 7064863245686590122}
   m_Layer: 0
   m_Name: plant_Tree
   m_TagString: Untagged
@@ -74,6 +75,19 @@ MonoBehaviour:
   rootsAnimation: {fileID: 6379597290369312017}
   laughSound: {fileID: 8300000, guid: 371d7da1974c0bb42b81cdead0f8976e, type: 3}
   uiHandler: {fileID: 0}
+--- !u!65 &7064863245686590122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394936016003891612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 3.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1449861543913441370
 GameObject:
   m_ObjectHideFlags: 0

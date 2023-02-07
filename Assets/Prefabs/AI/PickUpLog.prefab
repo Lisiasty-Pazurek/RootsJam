@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 1
   rootsOverlay: {fileID: 0}
+  rootsAnimation: {fileID: 0}
   laughSound: {fileID: 0}
   uiHandler: {fileID: 0}
 --- !u!65 &3069586846522936415
@@ -134,5 +135,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.45, y: 0.74, z: 0.82357264}
-  m_Center: {x: 0, y: 0.37, z: 0.14051938}
+  m_Size: {x: 3.45, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.4, z: 0}

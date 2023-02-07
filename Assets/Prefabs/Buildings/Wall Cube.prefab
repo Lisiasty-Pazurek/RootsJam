@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2040219488661894561}
   - component: {fileID: 95850846329386660}
-  - component: {fileID: 4022414947597961234}
   m_Layer: 8
   m_Name: Wall Cube
   m_TagString: Untagged
@@ -91,24 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &4022414947597961234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95850846329386662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63d7c7a7db2d1745b8f90b68eb5257e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  maxDistance: 7
-  player: {fileID: 0}
 --- !u!1 &1774411142493443417
 GameObject:
   m_ObjectHideFlags: 0
