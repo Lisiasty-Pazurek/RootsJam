@@ -33,8 +33,8 @@ public class UIHandler : MonoBehaviour
     void Update()
     {
         ChangeHP();
-        ChangeAcorns();
         CheckPoints();
+        ChangeScore();
         cantRun.enabled = playerController.runTime <= 0;
     }
 
@@ -52,7 +52,7 @@ public class UIHandler : MonoBehaviour
     }
 
 
-    void ChangeAcorns()
+    void ChangeScore()
     {
         Points.text = Score.ToString();
     }

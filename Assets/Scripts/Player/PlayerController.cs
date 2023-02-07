@@ -4,27 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-
 public class PlayerController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float speed = 3f;
     public float currentSpeed = 3f;
-    [SerializeField]
-    public int cHP = 5;
-
-    [SerializeField]
-    public float runTime = 3f;
-    [SerializeField]
-    public float runTimeMax = 3f;
-
-    [SerializeField]
-    public float restTime = 0f;
-    [SerializeField]
-    public float restTimeMax = 3f;
+    [SerializeField] public int cHP = 5;
+    [SerializeField] public float runTime = 3f;
+    [SerializeField] public float runTimeMax = 3f;
+    [SerializeField] public float restTime = 0f;
+    [SerializeField] public float restTimeMax = 3f;
     private bool resting;
-
     public float invincibleTime = -101f;
+    
     public Animator cAnimator;
     public SpriteRenderer cRenderer;
     public AudioSource cAudioSource;
