@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ForWoodcutter))]
 public class Interactable : MonoBehaviour
 {
-    bool canInteract = true;
+    // bool canInteract = true;
     // bool itemState = false;
 
     [SerializeField] bool canBeCarried = false;
@@ -81,7 +81,7 @@ public class Interactable : MonoBehaviour
     public void PlantRoots()
     {
         this.GetComponent<ForWoodcutter>().RootIt();
-        rootsAnimation.Play();
+//        rootsAnimation.Play();
         RootedHandler(true);
         if (this.GetComponent<ForWoodcutter>().GivePoint)
         uiHandler.Score ++;
@@ -91,14 +91,15 @@ public class Interactable : MonoBehaviour
     {
         if (this.GetComponent<ForWoodcutter>().rooted)
         {
-            rootsOverlay.enabled = state;
+//            rootsOverlay.enabled = state;
+            rootsAnimation.Play("Rooting");
         }
     }
 
     void Update()
     {
-        if (canBeCarried == false)
-        rootsOverlay.enabled = this.GetComponent<ForWoodcutter>().rooted;
+//        if (canBeCarried == false)
+//        rootsOverlay.enabled = this.GetComponent<ForWoodcutter>().rooted;
 
     }
 

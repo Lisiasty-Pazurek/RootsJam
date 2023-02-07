@@ -109,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7673232173094769775}
   - component: {fileID: 5533354786000207560}
+  - component: {fileID: 3877926194257977907}
   m_Layer: 0
   m_Name: pila
   m_TagString: Untagged
@@ -124,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3113223149195403596}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.54, y: 0.13, z: 0.31}
+  m_LocalPosition: {x: 1.71, y: 1.9, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -183,3 +184,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!111 &3877926194257977907
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113223149195403596}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 21b8756ff369c0a47a7c4c6f19d722d3, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 21b8756ff369c0a47a7c4c6f19d722d3, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
