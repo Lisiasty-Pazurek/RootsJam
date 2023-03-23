@@ -17,6 +17,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] public Text hpText;
     [SerializeField] public Text Points;
 
+    public List<Canvas> uiCanvas; 
     [SerializeField] public Canvas startGame;
     [SerializeField] public Canvas playGame;
     [SerializeField] public Canvas endGame;
