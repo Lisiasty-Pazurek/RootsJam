@@ -161,6 +161,7 @@ MonoBehaviour:
   invincibleTime: -101
   cAnimator: {fileID: 0}
   cRenderer: {fileID: 0}
+  cAudioSource: {fileID: 0}
   aState: 
   pickUpTime: 1
   blockMoveTime: 0
@@ -230,8 +231,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Radius: 1.4
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!95 &4147697880795487634
 Animator:
   serializedVersion: 5
@@ -252,6 +253,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &4147697880795487643
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,7 +392,7 @@ GameObject:
   - component: {fileID: 8913093692483558337}
   - component: {fileID: 5204056128576828271}
   m_Layer: 0
-  m_Name: pieniek-1-cien
+  m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
