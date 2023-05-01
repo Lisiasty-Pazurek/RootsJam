@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(ForWoodcutter))]
 public class Interactable : MonoBehaviour
 {
@@ -15,15 +14,10 @@ public class Interactable : MonoBehaviour
     [SerializeField] AudioClip laughSound;
     [SerializeField] UIHandler uiHandler;
 
-
-
-
     public void Start()
     {
         uiHandler = FindObjectOfType<UIHandler>();
-        
     }
-
 
     private void OnTriggerStay(Collider other)
     {
@@ -31,7 +25,6 @@ public class Interactable : MonoBehaviour
         {
             Interact(other);
         }
-
         else return;
 
     }
@@ -50,11 +43,8 @@ public class Interactable : MonoBehaviour
                 PlantRoots();
                 other.GetComponent<PlayerController>().blockMoveTime = 2f;
                 other.GetComponent<AudioSource>().PlayOneShot(laughSound);
-
-
             }
         }
-
     }
 
     public void PickUp(Collider other)
@@ -64,7 +54,6 @@ public class Interactable : MonoBehaviour
         other.GetComponent<PlayerController>().carriedItem = this.gameObject;
         other.GetComponent<PlayerController>().pickUpTime = 1f;
         this.GetComponent<ForWoodcutter>().ReservedFor = 999;
-
     }
 
     public void PutDown(PlayerController player)
@@ -75,24 +64,20 @@ public class Interactable : MonoBehaviour
         ForWoodcutter fw = this.GetComponent<ForWoodcutter>();
         fw.ReservedFor = -1;
         //    fw.RootIt();
-
     }
 
     public void PlantRoots()
     {
         this.GetComponent<ForWoodcutter>().RootIt();
-//        rootsAnimation.Play();
         RootedHandler(true);
         if (this.GetComponent<ForWoodcutter>().GivePoint)
         uiHandler.playerScore ++;
-        
     }
 
     public void RootedHandler(bool state)
     {
         if (this.GetComponent<ForWoodcutter>().rooted && rootsAnimator != null)
         {
-//            rootsOverlay.enabled = state;
             rootsAnimator.SetBool("rooted", true);
         }
     }
