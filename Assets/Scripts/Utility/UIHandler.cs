@@ -11,11 +11,12 @@ public class UIHandler : MonoBehaviour
 
     public GameObject activeObjects;
 
-    public int Score = 0;
+    public int playerScore = 0;
     public int enemyScore = 0;
     [SerializeField] public int maxScore = 6;
     [SerializeField] public Text hpText;
-    [SerializeField] public Text Points;
+    [SerializeField] public Text pScoreText;
+    [SerializeField] public Text eScoreText;
 
     public List<Canvas> uiCanvas; 
     [SerializeField] public Canvas startGame;
@@ -36,6 +37,7 @@ public class UIHandler : MonoBehaviour
         ChangeHP();
         CheckPoints();
         ChangeScore();
+        ChangeEnemyScore();
         cantRun.enabled = playerController.runTime <= 0;
     }
 
@@ -55,12 +57,17 @@ public class UIHandler : MonoBehaviour
 
     void ChangeScore()
     {
-        Points.text = Score.ToString();
+        pScoreText.text = playerScore.ToString() + "/" + maxScore;
+    }
+
+    void ChangeEnemyScore()
+    {
+        eScoreText.text = enemyScore.ToString();
     }
 
     void CheckPoints()
     {
-        if (Score >= maxScore) 
+        if (playerScore >= maxScore) 
         {
             PlayerWin();
         }
@@ -88,6 +95,6 @@ public class UIHandler : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+         SceneManager.LoadScene("MainMenu");
     }
 }

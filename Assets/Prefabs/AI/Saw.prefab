@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 5408516375906197576}
-  rootsAnimation: {fileID: 8069870749003687653}
+  rootsAnimator: {fileID: 8780184685738178279}
   laughSound: {fileID: 8300000, guid: 35c122c4ca42f00409b447943322dcce, type: 3}
   uiHandler: {fileID: 0}
 --- !u!1001 &5103154363874368039
@@ -241,8 +241,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1656597901227385148, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
   m_PrefabInstance: {fileID: 5103154363874368039}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &8069870749003687653 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 2967867118673558722, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
+--- !u!95 &8780184685738178279 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -4680523516787233600, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
   m_PrefabInstance: {fileID: 5103154363874368039}
   m_PrefabAsset: {fileID: 0}

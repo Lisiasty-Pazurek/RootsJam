@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class WoodcutterBehavior : MonoBehaviour
 {
+    public UIHandler uiHandler;
     [SerializeField]
     public int Id;
     private StateMachine _stateMachine;
@@ -75,7 +76,7 @@ public class WoodcutterBehavior : MonoBehaviour
     private void Awake()
     {
         InitStateMachine();
-
+        uiHandler = FindAnyObjectByType<UIHandler>();
     }
 
     private void InitStateMachine()

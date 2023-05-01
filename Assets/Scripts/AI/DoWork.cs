@@ -125,6 +125,7 @@ namespace Assets.Script.GRLO
                     break;
                 case "PlankBox":
                     _woodcutter._plankNo = 0;
+                    _woodcutter.uiHandler.enemyScore += 1;
                     break;
                 default:
                     break;

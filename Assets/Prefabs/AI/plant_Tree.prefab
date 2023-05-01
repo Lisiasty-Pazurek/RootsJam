@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeCarried: 0
   rootsOverlay: {fileID: 8970037560993276860}
-  rootsAnimation: {fileID: 6379597290369312017}
+  rootsAnimator: {fileID: 5669022768844272915}
   laughSound: {fileID: 8300000, guid: 371d7da1974c0bb42b81cdead0f8976e, type: 3}
   uiHandler: {fileID: 0}
 --- !u!65 &7064863245686590122
@@ -363,7 +363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 998922970647951983, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656597901227385148, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
       propertyPath: m_RootOrder
@@ -423,9 +423,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
---- !u!111 &6379597290369312017 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 2967867118673558722, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
+--- !u!95 &5669022768844272915 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -4680523516787233600, guid: 3d969eef22695bd4aaeeb6deddbfaf22, type: 3}
   m_PrefabInstance: {fileID: 8189543605318752723}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7447389759615826159 stripped
