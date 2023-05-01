@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(ForWoodcutter))]
 public class Interactable : MonoBehaviour
 {
-    // bool canInteract = true;
-    // bool itemState = false;
-
     [SerializeField] bool canBeCarried = false;
     [SerializeField] SpriteRenderer rootsOverlay = null;
     [SerializeField] Animator rootsAnimator;
@@ -31,7 +28,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact(Collider other)
     {
-        if (other.GetComponent<PlayerController>().carriedItem == null && this.canBeCarried)
+        if (other.GetComponent<PlayerController>().carriedItem == null && canBeCarried)
         {
             PickUp(other);
         }
