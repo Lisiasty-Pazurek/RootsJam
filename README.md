@@ -17,6 +17,6 @@ The game level ends once player loses all health or after getting the required s
 2,5d, vector digital artwork.
 
 ### Screenshots
-![Image shows tree stumpl player running away from lumberjacks in IAmRoot minigame](https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2023/02/768049/iamroot2.png)
+![Image shows tree stumpl player running away from lumberjacks in IAmRoot minigame]([https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2023/02/768049/iamroot2.png](https://img.itch.zone/aW1hZ2UvMjA1MTg1MS8xMjA2NjQwMS5qcGc=/250x600/4sMxJ2.jpg))
 
 ### Links
