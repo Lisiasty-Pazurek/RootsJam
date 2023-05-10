@@ -23,5 +23,7 @@ The game level ends once player loses all health or after getting the required s
 
 ### Links
 [IamRoot at Itch.io](https://pazurek.itch.io/iamroot)
+
 [IamRoot at GlobalGameJam](https://globalgamejam.org/2023/games/i-am-root-1-0)
+
 [IamRoot at Github](https://lisiasty-pazurek.github.io/IAmRoot/)
