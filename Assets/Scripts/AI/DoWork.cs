@@ -44,9 +44,13 @@ namespace Assets.Script.GRLO
                     {
                     }
 
-                    if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
+                    if (UnityEngine.Random.Range(0f, 1f) > 0.5f || _woodcutter.TargetItem.rooted)
                     {
                         _woodcutter._haveAxeSharp = false;
+                    }
+                    if (_woodcutter.TargetItem.rooted)
+                    {
+                        _woodcutter.TargetItem.rooted = false;
                     }
 
                     break;
